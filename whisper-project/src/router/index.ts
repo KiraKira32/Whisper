@@ -6,19 +6,19 @@ const router = createRouter({
   routes: [
     {
       // whisper index
-      path: "/",
-      component: () => import("../pages/index.vue"),
-      children: [],
-    },
-    {
       path: "/login",
-      component: () => import("../pages/login.vue"),
+      name: "Login",
+      component: () => import("../pages/PageLogin.vue"),
       children: [],
     },
     {
       path: "/register",
-      component: () => import("../pages/register.vue"),
+      component: () => import("../pages/PageRegister.vue"),
       children: [],
+    },
+    {
+      path: "/",
+      redirect: "/login",
     },
   ],
 });

@@ -3,12 +3,12 @@
     class="register h-screen flex items-center justify-center bg-login-background"
   >
     <main>
-      <div class="login_form">
-        <div>
-          <div class="login_form_title flex flex-col items-center">
+      <div class="create_form">
+        <section>
+          <div class="flex flex-col items-center">
             <div class="text-2xl mt-2 font-bold text-purple-50">建立新帳號</div>
           </div>
-        </div>
+        </section>
         <!-- 添加表單 submit 處理器，並不需要 prevent 因為 VeeValidate 會幫我們處理 -->
         <VForm @submit="onSubmit" v-slot="{ meta }">
           <!-- 電子郵件 -->
@@ -16,6 +16,7 @@
             >電子郵件 <span class="text-red-500">*</span></label
           >
           <VField
+            v-model="form.email"
             name="電子郵件"
             type="email"
             rules="required|email"
@@ -23,11 +24,14 @@
             placeholder="you@example.com"
           />
           <ErrorMessage class="text-red-500 text-xs" name="電子郵件" />
+
           <!-- 使用者名稱 -->
-          <label for="password" class="register_form_label"
+
+          <label for="userName" class="register_form_label"
             >使用者名稱 <span class="text-red-500">*</span>
           </label>
           <VField
+            v-model="form.userName"
             type="userName"
             name="使用者名稱"
             class="login_input"
@@ -35,22 +39,39 @@
             rules="required"
           />
           <ErrorMessage class="text-red-500 text-xs" name="使用者名稱" />
+
           <!-- 密碼 -->
+
           <label for="password" class="register_form_label"
             >密碼 <span class="text-red-500">*</span></label
           >
+
           <VField
-            v-model="password"
+            v-model="form.password"
             type="password"
             name="密碼"
             class="login_input"
             placeholder="password"
-            rules="required|min:6|regex:/^[A-Za-z0-9]+$/"
+            rules="required|regex:/^[A-Za-z0-9]+$/|min:6"
           />
           <ErrorMessage class="text-red-500 text-xs" name="密碼" />
 
+          <label for="confirmPassword" class="register_form_label"
+            >再次輸入密碼 <span class="text-red-500">*</span></label
+          >
+
+          <VField
+            v-model="form.confirmPassword"
+            type="password"
+            name="再次輸入密碼"
+            class="login_input"
+            placeholder="password"
+            rules="required|regex:/^[A-Za-z0-9]+$/|min:6|confirmed:密碼"
+          />
+          <ErrorMessage class="text-red-500 text-xs" name="再次輸入密碼" />
+
           <button type="submit" class="register_btn" :disabled="!meta.valid">
-            註冊
+            送出
           </button>
           <div class="mt-3 text-sm text-neutral-500">
             <router-link to="/login"
@@ -67,20 +88,33 @@
 
 <script setup lang="ts" name="Register">
 import { ref } from "vue";
+// import { defineRule } from "vee-validate";
+
 import { useFormStore } from "../store/useFormStore.ts";
 
-// 使用 Pinia Store
-// const formStore = useFormStore();
-// const { name, password, errors, onSubmit } = formStore;
+const { userName, password } = useFormStore;
 
-const { handleSubmit, userName, password, onSubmit, errors, resetForm } =
-  useFormStore;
+// defineRule("regex", (value: string) => {
+//   const pattern = /^[A-Za-z0-9]+$/;
+//   if (!pattern.test(value)) {
+//     return "密碼只能包含數字和英文字符";
+//   }
+//   if (value.length < 6) {
+//     return "密碼長度需至少6個字元";
+//   }
+//   return true;
+// });
 
 const form = ref({
   email: "",
   userName: "",
   password: "",
+  confirmPassword: "",
 });
+
+const onSubmit = () => {
+  console.log("表單資料:", form.value);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -93,7 +127,7 @@ html {
 .register_form_label {
   @apply mt-4 mb-2 block text-sm font-medium text-neutral-300;
 }
-.login_form {
+.create_form {
   @apply bg-login-form-background rounded-md p-6 w-login-custom-420 shadow-md;
 }
 
@@ -102,6 +136,6 @@ html {
 }
 
 .register_btn {
-  @apply mt-5 w-full hover:bg-violet-600 bg-lg-7225EB rounded-md py-3 text-purple-50;
+  @apply mt-5 w-full disabled:bg-zinc-600  hover:bg-violet-600 bg-lg-7225EB rounded-md py-3 text-purple-50;
 }
 </style>
