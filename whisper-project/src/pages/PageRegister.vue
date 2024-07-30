@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="register h-screen flex items-center justify-center bg-login-background"
-  >
+  <div class="register h-screen flex items-center justify-center bg-cl-9C96CD">
     <main>
       <div class="create_form">
         <section>
@@ -86,7 +84,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Register">
+<script setup lang="ts" name="PageRegister">
 import { ref } from "vue";
 // import { defineRule } from "vee-validate";
 
@@ -117,7 +115,7 @@ const onSubmit = () => {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lnag="scss" scoped>
 /* 確保瀏覽器默認的 margin 和 padding 被清除 */
 body,
 html {
@@ -128,14 +126,19 @@ html {
   @apply mt-4 mb-2 block text-sm font-medium text-neutral-300;
 }
 .create_form {
-  @apply bg-login-form-background rounded-md p-6 w-login-custom-420 shadow-md;
+  @apply rounded-md p-4 bg-cl-2E2C36
+  w-login-custom-336 
+  sm:p-6 sm:w-login-custom-420
+  lg:w-login-custom-420 
+  max-w-sm 
+  shadow-md;
 }
 
 .login_input {
-  @apply px-3 py-3 text-gray-300  border-transparent bg-login-input border shadow-sm placeholder-neutral-500 focus:outline-none focus:border-lg-7225EB focus:ring-lg-7225EB block w-full rounded-md sm:text-sm focus:ring-1;
+  @apply px-3 py-3 text-gray-300  border-transparent bg-cl-1F1F1F border shadow-sm placeholder-neutral-500 focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB block w-full rounded-md sm:text-sm focus:ring-1;
 }
 
 .register_btn {
-  @apply mt-5 w-full disabled:bg-zinc-600  hover:bg-violet-600 bg-lg-7225EB rounded-md py-3 text-purple-50;
+  @apply mt-5 w-full disabled:bg-zinc-600  hover:bg-violet-600 bg-cl-7225EB rounded-md py-3 text-purple-50;
 }
 </style>

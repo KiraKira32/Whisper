@@ -11,11 +11,15 @@
   "dependencies": {
     "@vee-validate/i18n": "^4.13.2",
     "@vee-validate/rules": "^4.13.2",
+    "@vueuse/core": "^10.11.0",
+    "mobile-detect": "^1.4.5",
     "pinia": "^2.1.7",
+    "scss": "^0.2.4",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
     "vee-validate": "^4.13.2",
     "vue": "^3.4.31",
+    "vue-mobile-detection": "^2.0.1",
     "vue-router": "^4.4.0",
     "yup": "^1.4.0"
   },

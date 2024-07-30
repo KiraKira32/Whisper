@@ -1,11 +1,8 @@
 <template>
-  <div
-    class="login h-screen flex items-center justify-center bg-login-background"
-  >
+  <div class="login h-screen flex items-center justify-center bg-cl-9C96CD">
     <main>
       <div class="login_form">
         <div>
-          <!-- <img src="" alt="" /> -->
           <div class="login_form_title flex flex-col items-center">
             <div class="text-2xl my-2 font-bold text-purple-50">歡迎回來！</div>
             <div class="text-l text-gray-400 mb-6">我們很高興又見到您了！</div>
@@ -56,7 +53,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="PageLogin">
 import { ref } from "vue";
 import { useFormStore } from "../store/useFormStore.ts";
 
@@ -72,26 +69,27 @@ const onSubmit = () => {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 /* 確保瀏覽器默認的 margin 和 padding 被清除 */
-body,
-html {
-  @apply m-0 p-0;
-}
 
 .form_label {
   @apply mt-4 mb-2 block text-sm font-medium text-neutral-300;
 }
 
 .login_form {
-  @apply bg-login-form-background rounded-md p-6 w-login-custom-420 shadow-md;
+  @apply rounded-md p-4 bg-cl-2E2C36
+  w-login-custom-336 
+  sm:p-6 sm:w-login-custom-420 
+  lg:w-login-custom-420 
+  max-w-sm 
+  shadow-md;
 }
 
 .login_input {
-  @apply px-3 py-3 text-gray-300  border-transparent bg-login-input border shadow-sm placeholder-neutral-500 focus:outline-none focus:border-lg-7225EB focus:ring-lg-7225EB block w-full rounded-md sm:text-sm focus:ring-1;
+  @apply px-3 py-3 text-gray-300  border-transparent bg-cl-1F1F1F border shadow-sm placeholder-neutral-500 focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB block w-full rounded-md sm:text-sm focus:ring-1;
 }
 
 .login_btn {
-  @apply w-full disabled:bg-zinc-600  hover:bg-violet-600 bg-lg-7225EB rounded-md py-3 text-purple-50;
+  @apply w-full disabled:bg-zinc-600  hover:bg-violet-600 bg-cl-7225EB rounded-md py-3 text-purple-50;
 }
 </style>

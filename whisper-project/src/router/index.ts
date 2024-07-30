@@ -17,6 +17,11 @@ const router = createRouter({
       children: [],
     },
     {
+      path: "/channels",
+      component: () => import("../pages/PageChannels.vue"),
+      children: [],
+    },
+    {
       path: "/",
       redirect: "/login",
     },
