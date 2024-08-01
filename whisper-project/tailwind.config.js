@@ -23,6 +23,13 @@ export default {
         'cl-BAA9C180': '#BAA9C180',
         'cl-E8E1F1': '#E8E1F1',
         'cl-C3C3C3': '#C3C3C3',
+        // 頻道_狀態 
+        'cl-241D29': '#241D29',
+        // 頻道_好友
+        'cl-564E63': '#564E63',
+        'cl-87748F': '#87748F',
+        'cl-E8E0F5': '#E8E0F5',
+        'cl-8E4FF1': '#8E4FF1',
 
       },
       width: {
@@ -39,19 +46,20 @@ export default {
         //頻道_好友列表
         'fh-50': '3.125rem',
         'fh-45': '2.8125rem',
-        '64vh': '64vh',
-        '74vh': '74vh',
-        '80vh': '80vh',
-        '85vh': '85vh',
         'calc-239': 'calc(100dvh - 239px)',
-      },
-      padding: {
-        //頻道_好友列表
-
       },
       fontFamily: {
         sans: ['Noto Sans TC', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
+      },
+      animation: {
+        'spin-slow': 'spin 1.5s linear infinite',
+      },
+      keyframes: {
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
     },
   },
@@ -66,6 +74,15 @@ export default {
             'display': 'none', /* Safari 和 Chrome */
           },
         },
+        // 行數限制顯示
+        '.line-clamp-1': {
+          'display': '-webkit-box',
+          '-webkit-line-clamp': '1',
+          '-webkit-box-orient': 'vertical',
+          'overflow': 'hidden',
+          'text-overflow': 'ellipsis',
+        },
+      
       }, ['responsive']);
     },
   ],

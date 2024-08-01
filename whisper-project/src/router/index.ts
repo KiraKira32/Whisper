@@ -19,7 +19,12 @@ const router = createRouter({
     {
       path: "/channels",
       component: () => import("../pages/PageChannels.vue"),
-      children: [],
+      children: [
+        {
+          path: "@me",
+          component: () => import("../components/UserFriends.vue"),
+        },
+      ],
     },
     {
       path: "/",

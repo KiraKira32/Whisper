@@ -14,8 +14,4 @@ import { useDarkModeStore } from "./store/darkModeStore";
 const darkModeStore = useDarkModeStore();
 </script>
 
-<style scoped>
-button {
-  @apply p-2 bg-blue-500 text-white rounded;
-}
-</style>
+<style scoped></style>
