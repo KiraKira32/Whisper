@@ -22,7 +22,7 @@ const router = createRouter({
       children: [
         {
           path: "@me",
-          component: () => import("../components/UserFriends.vue"),
+          component: () => import("../pages/PageFriends.vue"),
         },
       ],
     },

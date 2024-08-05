@@ -2,12 +2,10 @@
   <div class="page-channels flex">
     <UserChannels />
     <section class="h-screen flex-col flex justify-between bg-cl-353040">
-      <div class="">
-        <UserFriendsList />
-      </div>
-      <div class=""><UserStatus /></div>
+      <UserFriendsList />
+      <UserStatus />
     </section>
-    <section>
+    <section class="page-channels">
       <RouterView />
     </section>
   </div>

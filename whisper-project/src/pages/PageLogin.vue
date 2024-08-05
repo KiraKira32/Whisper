@@ -112,7 +112,14 @@ const onSubmit = () => {
 }
 
 .login-input {
-  @apply px-3 py-3 text-gray-300  border-transparent bg-cl-1F1F1F border shadow-sm placeholder-neutral-500 focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB block w-full rounded-md sm:text-sm focus:ring-1;
+  @apply px-3 py-3 
+  text-gray-300    bg-cl-1F1F1F 
+  border-transparent border 
+  shadow-sm 
+  placeholder-neutral-500 
+  focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB 
+  block w-full 
+  rounded-md sm:text-sm focus:ring-1;
 }
 
 .login-btn {

@@ -1,4 +1,5 @@
 <template>
+  <!-- 使用者好友列表 -->
   <div class="user-friends-lsit">
     <main class="w-60 bg-cl-353040">
       <div class="h-fh-50 bg-cl-473653"></div>
@@ -20,7 +21,8 @@
         <p class="w-fw-212 text-cl-C4BECD font-bold">私人訊息</p>
       </div>
       <div class="pr-2 pb-3">
-        <div class="h-calc-239 list-scroll overflow-y-auto">
+        <!-- list-scroll  -->
+        <div class="h-calc-239 overflow-y-auto scroll-bar-style">
           <section class="friends-flex flex-col gap-3 cursor-pointer">
             <div
               class="friends-info flex gap-2 w-fw-212 px-2 py-2 hover:bg-cl-BAA9C180 hover:rounded-md"
@@ -73,25 +75,6 @@
     .friends-name,
     friends-state {
       color: #e8e1f1;
-    }
-  }
-  /* scroll bar 樣式*/
-  .list-scroll {
-    /* 整體滾動條樣式 */
-    &::-webkit-scrollbar {
-      width: 8px;
-      background: #353040;
-    }
-    /* 滾動條滑塊 */
-    &::-webkit-scrollbar-thumb {
-      border-radius: 20px;
-
-      background: #6f687a; /* 背景顏色 */
-    }
-    /* 滾動條軌道 */
-    &::-webkit-scrollbar-track {
-      background: #1f1f1f; /* 背景顏色 */
-      border-radius: 10px; /* 圓角 */
     }
   }
 }
