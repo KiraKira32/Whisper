@@ -132,7 +132,7 @@
 </template>
 
 <script setup lang="ts" name="BlockFrinedsList">
-import { ref, defineProps, computed, onMounted, onUnmounted, Ref } from "vue";
+import { ref, defineProps, computed, onMounted, onUnmounted } from "vue";
 import BlockTabsEmptyState from "./BlockTabsEmptyState.vue";
 
 defineProps(["currentTab", "selectTab"]);
@@ -177,6 +177,7 @@ const handleClickOutside = (event: MouseEvent) => {
   if (!clickedInside) {
     closeSettings();
   }
+  console.log("blockFriendsList");
 };
 
 // 全局點擊事件監聽，用來檢測是否點擊視窗外部

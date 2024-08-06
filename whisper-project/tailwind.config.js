@@ -35,6 +35,9 @@ export default {
         'cl-5E3EC6': '#5E3EC6',
         'cl-BEB9C5': '#BEB9C5',
         'cl-9487AA': '#9487AA',
+        // 使用者資訊
+        'cl-1B1B1BCC': '#1B1B1BCC',
+        'cl-594866': '#594866',
       },
       width: {
         // 登入頁面
@@ -48,9 +51,17 @@ export default {
         'calc-312': 'calc(100dvw - 312px)',
         'calc-700': 'calc(100dvw - 700px)',
         'calc-1532': 'calc(100dvw - 1532px)',
+        // 使用者資訊
+        '600': '600px',
+        '120': '120px',
       },
       minWidth: {
         '388': '388px',
+        '600': '600px',
+       
+      },
+      maxWidth: {
+        '600': '600px',
       },
       height: {
         // 頻道_好友列表
@@ -60,6 +71,8 @@ export default {
         // 頻道_好友
         'calc-50': 'calc(100dvh -  50px)',
         'calc-200' : 'calc(100dvh - 200px)',
+         // 使用者資訊
+         '120': '120px',
         
       },
       fontFamily: {
