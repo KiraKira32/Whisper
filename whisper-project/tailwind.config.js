@@ -22,6 +22,7 @@ export default {
         'cl-BAA9C180': '#BAA9C180',
         'cl-E8E1F1': '#E8E1F1',
         'cl-C3C3C3': '#C3C3C3',
+        'cl-141316E5': '#141316E5',
         // 頻道_狀態 
         'cl-241D29': '#241D29',
         // 頻道_好友
@@ -45,6 +46,11 @@ export default {
         'fw-212': '13.25rem',
         // 頻道_好友
         'calc-312': 'calc(100dvw - 312px)',
+        'calc-700': 'calc(100dvw - 700px)',
+        'calc-1532': 'calc(100dvw - 1532px)',
+      },
+      minWidth: {
+        '388': '388px',
       },
       height: {
         // 頻道_好友列表
@@ -69,6 +75,9 @@ export default {
           '100%': { transform: 'rotate(360deg)' },
         },
       },
+      animationPlayState: {
+        paused: 'paused',
+      },
     },
   },
   plugins: [
@@ -82,7 +91,7 @@ export default {
             'display': 'none', /* Safari 和 Chrome */
           },
         },
-        // 行數限制顯示
+        // 行數顯示限制
         '.line-clamp-1': {
           'display': '-webkit-box',
           '-webkit-line-clamp': '1',
@@ -90,7 +99,7 @@ export default {
           'overflow': 'hidden',
           'text-overflow': 'ellipsis',
         },
-        //  scroll bar樣式
+        // Scroll bar樣式
         '.scroll-bar-style': {
           '&::-webkit-scrollbar': {
             'width': '5px;',
@@ -106,7 +115,11 @@ export default {
             'background': '#27262E', /* 背景顏色 */
             'border-radius': '10px', /* 圓角 */
           },
-        }
+        },
+        // 暫停動畫
+        '.animate-stop': {
+          'animation-play-state': 'paused',
+        },
       }, ['responsive']);
     },
   ],

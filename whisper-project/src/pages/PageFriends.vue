@@ -1,6 +1,6 @@
 <template>
   <!-- 使用者Tabs區塊 -->
-  <div class="user-friends">
+  <div class="user-friends w-calc-312">
     <!-- tabs切換功能 -->
     <section class="h-fh-50 bg-cl-473653 flex items-center">
       <section class="flex gap-3 pl-5">
@@ -16,16 +16,19 @@
         </div>
       </section>
     </section>
-    <!-- 好友列表顯示 -->
-    <section>
+
+    <section class="flex w-calc-312">
+      <!-- 好友列表顯示 -->
       <BlockFrinedsList :currentTab="currentTab" :selectTab="selectTab" />
+      <!-- 動態牆顯示 -->
+      <BlockMotionList />
     </section>
   </div>
 </template>
 
 <script setup lang="ts" name="UserFriends">
 import BlockFrinedsList from "../components/Block/BlockFrinedsList.vue";
-
+import BlockMotionList from "../components/Block/BlockMotionList.vue";
 import { ref } from "vue";
 
 const tabs = ref({
