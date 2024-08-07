@@ -63,7 +63,6 @@ export default {
       minWidth: {
         '388': '388px',
         '600': '600px',
-       
       },
       maxWidth: {
         '600': '600px',
@@ -76,8 +75,10 @@ export default {
         // 頻道_好友
         'calc-50': 'calc(100dvh -  50px)',
         'calc-200' : 'calc(100dvh - 200px)',
-         // 使用者資訊
-         '120': '120px',
+        // 頻道_動態牆
+        'calc-150' : 'calc(100dvh - 150px)',
+        // 使用者資訊
+        '120': '120px',
         
       },
       fontFamily: {
