@@ -23,18 +23,28 @@
         </div>
       </div>
     </section>
-    <section v-show="isShowInfo" class="absolute top-0 z-30">
-      <BlockUserInfo />
+    <!-- 像元件傳遞值以及接收更新的值 -->
+    <section v-if="isShowInfoUser" class="absolute top-0 z-30">
+      <BlockUserInfo :userState="userState" @update-user-state="setUserState" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts" name="UserStatus">
 import BlockUserInfo from "./Block/BlockUserInfo.vue";
-import { isShowInfo } from "../store/LayoutStore";
+import { isShowInfoUser } from "../store/LayoutStore";
+import { ref } from "vue";
+
+const userState = ref(false);
 
 const toggleUserInfo = () => {
-  isShowInfo.value = true;
+  isShowInfoUser.value = true;
+  userState.value = true;
+};
+
+// 更新 userState 的值, 用來重置 userState 狀態
+const setUserState = (newState: boolean) => {
+  userState.value = newState;
 };
 </script>
 

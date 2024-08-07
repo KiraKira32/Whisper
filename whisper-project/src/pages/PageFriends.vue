@@ -44,7 +44,6 @@ const currentTab = ref<string>("all");
 // 切換 Tab 狀態方法
 const selectTab = (tab: string) => {
   currentTab.value = tab;
-  // console.log(currentTab.value);
 };
 
 // Tab 動態 class 樣式

@@ -3,7 +3,7 @@
   <div class="block-friends-list">
     <main class="px-8 bg-cl-2E2C36 w-calc-700 h-calc-50">
       <!-- 搜尋欄位 -->
-      <section v-if="true">
+      <section v-if="false">
         <label class="py-6 flex">
           <input
             class="relative w-full bg-cl-1F1F1F rounded py-2 pr-4 pl-10 styled-input placeholder:text-m placeholder:text-cl-6B5D83 text-cl-C4BECD focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB focus:ring-1"
@@ -35,7 +35,7 @@
         </label>
       </section>
       <!-- 好友列表 -->
-      <section v-if="true">
+      <section v-if="false">
         <div class="text-cl-C4BECD font-bold mb-4">線上好友 xx位</div>
         <!-- 好友列表欄位顯示 -->
         <div class="pr-5 overflow-y-auto h-calc-200 scroll-bar-style">
@@ -76,7 +76,10 @@
                     @mouseleave="closeSettings"
                     class="flex flex-col gap-2 w-36 bg-cl-141316E5 py-2 px-3 rounded-md"
                   >
-                    <div class="text-cl-C4BECD click-hover px-2 py-1">
+                    <div
+                      @click.stop="toggleFriendsInfo()"
+                      class="text-cl-C4BECD click-hover px-2 py-1"
+                    >
                       查看資料
                     </div>
                     <div class="text-rose-600 click-hover px-2 py-1">
@@ -103,8 +106,9 @@
       </section>
 
       <!-- 好友空值展示 -->
+      {{ currentTab }}
       <section
-        v-if="currentTab !== 'friends &&' && false"
+        v-if="currentTab !== 'friends &&' && true"
         class="empty-state h-calc-50 flex justify-center items-center"
       >
         <BlockTabsEmptyState
@@ -128,18 +132,34 @@
         />
       </section>
     </main>
+    <section v-if="isShowInfoFriend">
+      <BlockUserInfo :friendState="friendState" />
+    </section>
   </div>
 </template>
 
 <script setup lang="ts" name="BlockFrinedsList">
-import { ref, defineProps, computed, onMounted, onUnmounted } from "vue";
-import BlockTabsEmptyState from "./BlockTabsEmptyState.vue";
+import BlockTabsEmptyState from "../Block/BlockTabsEmptyState.vue";
+import BlockUserInfo from "../Block/BlockUserInfo.vue";
+import { isShowInfoFriend } from "../../store/LayoutStore";
 
-defineProps(["currentTab", "selectTab"]);
+import { ref, defineProps, computed, onMounted, onUnmounted, watch } from "vue";
+
+// defineProps(["currentTab", "selectTab"]);
+
+const props = defineProps<{
+  currentTab: string;
+  selectTab: (tab: string) => void;
+}>();
 
 const tab = ref("friends");
-
+const friendState = ref(false);
 const hoverIndex = ref<number | null>(null);
+
+const toggleFriendsInfo = () => {
+  isShowInfoFriend.value = true;
+  friendState.value = true;
+};
 
 // 使用 ref 來存儲輸入框的值
 const inputValue = ref("");
@@ -177,7 +197,6 @@ const handleClickOutside = (event: MouseEvent) => {
   if (!clickedInside) {
     closeSettings();
   }
-  console.log("blockFriendsList");
 };
 
 // 全局點擊事件監聽，用來檢測是否點擊視窗外部

@@ -1,7 +1,7 @@
 <template>
   <div class="block-user-info">
     <main
-      v-if="isShowInfo"
+      v-if="isShowInfoUser || isShowInfoFriend"
       @click="closeInfo"
       class="fixed top-0 left-0 right-0 bottom-0"
     >
@@ -21,7 +21,6 @@
 
             <div class="flex gap-5 items-center mt-2">
               <div class="bg-cl-353040 w-120 h-120 rounded-full"></div>
-
               <div class="flex flex-col gap-1">
                 <div class="text-xl font-bold text-cl-E8E1F1">使用者的名稱</div>
                 <div class="text-base ont-bold text-cl-E8E1F1">
@@ -31,11 +30,18 @@
             </div>
             <div class="flex justify-end cursor-pointer">
               <div
+                v-if="userState"
                 class="flex gap-2 text-white bg-cl-BAA9C180 rounded py-1 px-2 hover:bg-cl-F2E9F680 transition-colors duration-500 ease-in-out"
               >
-                <img src="/icons/pencil_light.svg" alt="" />
-                <img src="/icons/message_light.svg" alt="" />
-                <div @click="clickEdit" class="text-sm">編輯個人資料</div>
+                <img src="/icons/pencil_light.svg" alt="icon" />
+                <p @click="clickEdit" class="text-sm">編輯個人資料</p>
+              </div>
+              <div
+                v-if="friendState"
+                class="flex gap-2 text-white bg-cl-BAA9C180 rounded py-1 px-2 hover:bg-cl-F2E9F680 transition-colors duration-500 ease-in-out"
+              >
+                <img src="/icons/message_light.svg" alt="icon" />
+                <p class="text-sm">傳送訊息</p>
               </div>
             </div>
             <div
@@ -54,23 +60,46 @@
         </div>
       </section>
     </main>
+    <BlockUserEdit v-if="isShowEdit" />
   </div>
-  <section v-if="isEdit">
-    <BlockUserEdit />
-  </section>
 </template>
 
 <script setup lang="ts" name="BlockUserInfo">
 // import { ref } from "vue";
 import BlockUserEdit from "./BlockUserEdit.vue";
-import { isShowInfo, isEdit } from "../../store/LayoutStore";
-// import { defineEmits } from "vue";
+import {
+  isShowInfoUser,
+  isShowEdit,
+  isShowInfoFriend,
+} from "../../store/LayoutStore";
+import { defineProps, defineEmits } from "vue";
 
+// defineProps(["userState", "friendState"]);
+
+const props = defineProps<{
+  userState?: boolean;
+  friendState?: boolean;
+}>();
+
+const friendState = props.friendState;
+const userState = props.userState;
+
+// console.log("userState", userState, "friendState", friendState);
+
+const emit = defineEmits<{
+  (e: "update-user-state", value: boolean): void;
+}>();
+
+/* 編輯資料 */
 const clickEdit = () => {
-  isEdit.value = true;
+  isShowEdit.value = true;
 };
 
+/* 關閉視窗 */
 const closeInfo = () => {
-  isShowInfo.value = false;
+  isShowInfoUser.value = false;
+  isShowInfoFriend.value = false;
+  /* 更新狀態  */
+  emit("update-user-state", false);
 };
 </script>

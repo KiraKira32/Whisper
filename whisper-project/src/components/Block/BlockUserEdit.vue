@@ -1,5 +1,5 @@
 <template>
-  <div class="block-user-edit" v-if="isEdit" @click="closeEdit">
+  <div class="block-user-edit" v-if="isShowEdit" @click="closeEdit">
     <main class="fixed top-0 left-0 right-0 bottom-0">
       <section class="w-screen h-screen flex justify-center items-center">
         <!-- 使用者資料區塊 -->
@@ -18,16 +18,6 @@
               </div>
             </section>
             <div class="border-t border-cl-6B5D83 w-full mb-10 mt-4"></div>
-
-            <!-- 關閉視窗 -->
-            <div class="cursor-pointer">
-              <!-- <img
-                @click="closeEdit"
-                class="absolute right-6 top-6 hover:-translate-y-1 hover:scale-110 duration-300"
-                src="/icons/round_cancel.svg"
-                alt=""
-              /> -->
-            </div>
 
             <section class="flex gap-5 items-center mt-5 mb-8">
               <!-- 使用者頭像 -->
@@ -102,7 +92,7 @@
 </template>
 
 <script setup lang="ts" name="BlockUserInfo">
-import { isShowInfo, isEdit } from "../../store/LayoutStore";
+import { isShowInfoUser, isShowEdit } from "../../store/LayoutStore";
 import { ref, computed } from "vue";
 
 const inputText = ref("");
@@ -114,12 +104,12 @@ const remainingChars = computed(() => {
 
 /* 關閉編輯元件 */
 const closeEdit = () => {
-  isEdit.value = false;
-  isShowInfo.value = false;
+  isShowEdit.value = false;
+  isShowInfoUser.value = false;
 };
 
 const backInfo = () => {
-  isEdit.value = false;
+  isShowEdit.value = false;
 };
 </script>
 
