@@ -35,7 +35,6 @@ import { isShowInfo } from "../store/LayoutStore";
 
 const toggleUserInfo = () => {
   isShowInfo.value = true;
-  // console.log("showUserInfo", isShowInfo.value);
 };
 </script>
 

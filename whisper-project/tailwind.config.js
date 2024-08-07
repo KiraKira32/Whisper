@@ -38,6 +38,11 @@ export default {
         // 使用者資訊
         'cl-1B1B1BCC': '#1B1B1BCC',
         'cl-594866': '#594866',
+        'cl-2E2C36CC': '#2E2C36CC',
+        'cl-F2E9F680': '#F2E9F680',
+        'cl-4D4866': '#4D4866',
+        'cl-7A4CC2': '#7A4CC2',
+
       },
       width: {
         // 登入頁面
