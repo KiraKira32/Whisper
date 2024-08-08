@@ -5,12 +5,14 @@
       class="channels-list z-0 bg-cl-221F26 w-cw-72 h-screen overflow-y-auto scrollbar-hidden"
     >
       <section>
-        <img
-          src="/icons/home.svg"
-          alt="home"
-          class="home-icon cursor-pointer mb-2"
-          :class="{ 'no-hover': isMobile }"
-        />
+        <router-link :to="{ name: 'PageFriends' }">
+          <img
+            src="/icons/home.svg"
+            alt="home"
+            class="home-icon cursor-pointer mb-2"
+            :class="{ 'no-hover': isMobile }"
+          />
+        </router-link>
       </section>
       <div class="border-t border-cl-6B5D83 w-12"></div>
       <section class="flex flex-col gap-4 mt-4">

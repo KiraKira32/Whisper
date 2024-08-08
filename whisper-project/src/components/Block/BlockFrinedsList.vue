@@ -36,7 +36,10 @@
           </label>
         </div>
         <div>
-          <div class="text-cl-C4BECD font-bold mb-4">線上好友 xx位</div>
+          <div class="flex text-cl-C4BECD text-xs font-bold mb-4">
+            <p>{{ currentTabText }}</p>
+            <span class="pl-1">xx位</span>
+          </div>
           <!-- 好友列表欄位顯示 -->
           <div class="pr-5 overflow-y-auto h-calc-200 scroll-bar-style">
             <div
@@ -46,14 +49,14 @@
               @mouseover="hoverIndex = index"
               @mouseleave="hoverIndex = null"
             >
-              <router-link :to="{ name: 'PageChatRoom' }">
-                <div
-                  class="flex justify-between gap-2 border-t border-cl-6B5D83 py-2 px-2"
-                  :class="{
-                    'border-transparent':
-                      hoverIndex === index || hoverIndex === index - 1,
-                  }"
-                >
+              <div
+                class="flex justify-between gap-2 border-t border-cl-6B5D83 py-2 px-2"
+                :class="{
+                  'border-transparent':
+                    hoverIndex === index || hoverIndex === index - 1,
+                }"
+              >
+                <router-link :to="{ name: 'PageChatRoom' }">
                   <section class="flex gap-3 relative">
                     <div
                       class="user-cover relative w-9 h-9 bg-slate-400 rounded-full"
@@ -64,47 +67,96 @@
                     </div>
                     <div>
                       <div class="text-cl-EDE6F7 text-sm">好友名稱</div>
-                      <div class="text-cl-C3C3C3 text-xs">
+                      <div
+                        v-if="currentTab == 'all' || currentTab == 'online'"
+                        class="text-cl-C3C3C3 text-xs"
+                      >
                         好友狀態的內容......
+                      </div>
+                      <!-- 等待中 -->
+                      <div
+                        v-if="currentTab == 'pending'"
+                        class="text-cl-C3C3C3 text-xs"
+                      >
+                        已收到好友邀請
                       </div>
                     </div>
                   </section>
-                  <!-- 功能 設定視窗 -->
-                  <section class="flex gap-3 relative">
-                    <section
-                      v-if="activeIndex === index"
-                      class="settings-window absolute right-2 top-4 z-10"
+                </router-link>
+                <!-- 功能 設定視窗 -->
+                <section class="flex gap-3 relative items-center">
+                  <section
+                    v-if="activeIndex === index"
+                    class="settings-window absolute right-2 top-4 z-10"
+                  >
+                    <div
+                      @mouseleave="closeSettings"
+                      class="flex flex-col gap-2 w-36 bg-cl-141316E5 py-2 px-3 rounded-md"
                     >
                       <div
-                        @mouseleave="closeSettings"
-                        class="flex flex-col gap-2 w-36 bg-cl-141316E5 py-2 px-3 rounded-md"
+                        @click.stop="toggleFriendsInfo()"
+                        class="text-cl-C4BECD click-hover px-2 py-1"
                       >
-                        <div
-                          @click.stop="toggleFriendsInfo()"
-                          class="text-cl-C4BECD click-hover px-2 py-1"
-                        >
-                          查看資料
-                        </div>
-                        <div class="text-rose-600 click-hover px-2 py-1">
-                          移除好友
-                        </div>
+                        查看資料
                       </div>
-                    </section>
-                    <img
-                      class="w-5 hover:scale-110"
-                      src="/icons/message.svg"
-                      alt=""
-                    />
-                    <img
-                      @click.stop="toggleSettings(index)"
-                      :class="{ 'hover:animate-stop': activeIndex === index }"
-                      class="w-5 hover:animate-spin-slow"
-                      src="/icons/settings.svg"
-                      alt=""
-                    />
+                      <div class="text-rose-600 click-hover px-2 py-1">
+                        移除好友
+                      </div>
+                    </div>
                   </section>
-                </div>
-              </router-link>
+                  <!-- 所有/線上 -->
+                  <div
+                    v-if="currentTab == 'online' || currentTab == 'all'"
+                    class="flex items-center gap-3"
+                  >
+                    <div
+                      class="flex justify-center items-center bg-cl-212026 w-8 h-8 rounded-full"
+                    >
+                      <router-link :to="{ name: 'PageChatRoom' }">
+                        <img
+                          class="message-icon hover:scale-110"
+                          src="/icons/message.svg"
+                          alt=""
+                        />
+                      </router-link>
+                    </div>
+                    <div
+                      class="flex justify-center items-center bg-cl-212026 w-8 h-8 rounded-full"
+                    >
+                      <img
+                        @click.stop="toggleSettings(index)"
+                        :class="{ 'hover:animate-stop': activeIndex === index }"
+                        class="w-5 hover:animate-spin-slow"
+                        src="/icons/settings.svg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <!-- 等待確認 -->
+                  <div class="flex items-center gap-3">
+                    <div
+                      v-if="currentTab == 'pending'"
+                      class="flex justify-center items-center bg-cl-212026 w-8 h-8 rounded-full"
+                    >
+                      <img
+                        class="check-icon w-6"
+                        src="/icons/check_default.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      v-if="currentTab == 'pending' || currentTab == 'blocked'"
+                      class="flex justify-center items-center bg-cl-212026 w-8 h-8 rounded-full"
+                    >
+                      <img
+                        class="cancel-icon w-5"
+                        src="/icons/cancel_dafault.svg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </section>
+              </div>
             </div>
           </div>
         </div>
@@ -148,7 +200,7 @@ import { isShowInfoFriend } from "../../store/LayoutStore";
 
 import { ref, defineProps, computed, onMounted, onUnmounted } from "vue";
 
-defineProps<{
+const props = defineProps<{
   currentTab: string;
   selectTab: (tab: string) => void;
 }>();
@@ -156,6 +208,22 @@ defineProps<{
 const tab = ref("friends");
 const friendState = ref(false);
 const hoverIndex = ref<number | null>(null);
+
+/*  currentTan 計算顯示的文字 */
+const currentTabText = computed(() => {
+  switch (props.currentTab) {
+    case "online":
+      return "線上";
+    case "all":
+      return "全部";
+    case "pending":
+      return "等待確認";
+    case "blocked":
+      return "封鎖";
+    default:
+      return "";
+  }
+});
 
 const toggleFriendsInfo = () => {
   isShowInfoFriend.value = true;
@@ -217,6 +285,17 @@ button:disabled {
 }
 
 .click-hover {
-  @apply hover:bg-cl-BAA9C180 hover:rounded-md cursor-pointer;
+  @apply hover:bg-cl-3B3743 hover:rounded-md cursor-pointer;
+}
+
+.check-icon:hover {
+  content: url("/public/icons/check_light.svg");
+}
+
+.cancel-icon:hover {
+  content: url("/public/icons/cancel_light.svg");
+}
+.message-icon:hover {
+  content: url("/public/icons/message_purple.svg");
 }
 </style>

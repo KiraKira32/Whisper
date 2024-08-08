@@ -40,8 +40,10 @@
                 <img src="/icons/pencil_light.svg" alt="icon" />
                 <p @click="clickEdit" class="text-sm">編輯個人資料</p>
               </div>
+
               <div
                 v-if="friendState"
+                @click="toggleChatRoom"
                 class="flex gap-2 text-white bg-cl-BAA9C180 rounded py-1 px-2 hover:bg-cl-F2E9F680 transition-colors duration-500 ease-in-out"
               >
                 <img src="/icons/message_light.svg" alt="icon" />
@@ -77,6 +79,7 @@ import {
   isShowInfoFriend,
 } from "../../store/LayoutStore";
 import { defineProps, defineEmits } from "vue";
+import { useRouter } from "vue-router";
 
 defineProps<{
   userState?: boolean;
@@ -90,6 +93,14 @@ const emit = defineEmits<{
 /* 編輯資料 */
 const clickEdit = () => {
   isShowEdit.value = true;
+};
+
+const router = useRouter();
+
+/* 導向聊天室 關閉使用者資訊 */
+const toggleChatRoom = () => {
+  router.push({ name: "PageChatRoom" });
+  isShowInfoFriend.value = false;
 };
 
 /* 關閉視窗 */

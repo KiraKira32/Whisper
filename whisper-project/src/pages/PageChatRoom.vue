@@ -1,6 +1,7 @@
 <template>
   <div class="page-chat-room">
     <main class="w-calc-312">
+      <!-- 聊天窗 -->
       <section
         class="h-fh-50 bg-cl-473653 flex items-center justify-between px-3"
       >
@@ -10,6 +11,7 @@
         </div>
         <div class="flex gap-2">
           <img
+            @click="toggleFriendsInfo()"
             class="info-icon cursor-pointer transition duration-500"
             src="/icons/personinfo_default.svg"
             alt=""
@@ -29,7 +31,7 @@
         </div>
       </section>
 
-      <!-- 聊天窗 -->
+      <!-- 聊天內容 -->
       <section class="bg-cl-2E2C36 h-calc-50 p-5">
         <div class="h-calc-239 overflow-y-auto scroll-bar-style">
           <div class="pr-5">
@@ -97,15 +99,27 @@
         </div>
       </section>
     </main>
+
+    <section v-if="isShowInfoFriend" class="">
+      <BlockUserInfo :friendState="friendState" />
+    </section>
   </div>
 </template>
 
 <script setup lang="ts" name="PageChatRoom">
+import BlockUserInfo from "../components/Block/BlockUserInfo.vue";
 import { ref, computed } from "vue";
-
+import { isShowInfoFriend } from "../store/LayoutStore";
 const inputText = ref("");
 
 const maxChars = ref(2000);
+
+const friendState = ref(false);
+
+const toggleFriendsInfo = () => {
+  isShowInfoFriend.value = true;
+  friendState.value = true;
+};
 
 const remainingChars = computed(() => {
   return maxChars.value - inputText.value.length;
