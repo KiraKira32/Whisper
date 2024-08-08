@@ -19,7 +19,7 @@
             >
               <section class="flex bg-cl-1F1F1F w-fu rounded-lg p-2 gap-2">
                 <div
-                  class="relative w-8 h-8 bg-white rounded-full flex-shrink-0"
+                  class="relative z-0 w-8 h-8 bg-white rounded-full flex-shrink-0"
                 >
                   <div class="img"></div>
                   <img
@@ -28,7 +28,7 @@
                     alt=""
                   />
                 </div>
-                <div class="">
+                <div>
                   <p
                     class="friends-name line-clamp-1 text-sm font-bold text-cl-C4BECD"
                   >

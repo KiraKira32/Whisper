@@ -22,7 +22,13 @@ const router = createRouter({
       children: [
         {
           path: "@me",
+          name: "PageFriends",
           component: () => import("../pages/PageFriends.vue"),
+        },
+        {
+          path: "@me/12345",
+          name: "PageChatRoom",
+          component: () => import("../pages/PageChatRoom.vue"),
         },
       ],
     },

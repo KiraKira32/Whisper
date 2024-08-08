@@ -5,6 +5,10 @@ export default {
   // darkMode: 'selector', 
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Noto Sans TC', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
+      },
       colors: {
         // 登入頁面
         'cl-2E2C36': '#2E2C36',
@@ -42,6 +46,9 @@ export default {
         'cl-F2E9F680': '#F2E9F680',
         'cl-4D4866': '#4D4866',
         'cl-7A4CC2': '#7A4CC2',
+        // 聊天室
+        'cl-413E4B': '#413E4B',
+        'cl-787380': '#787380'
 
       },
       width: {
@@ -81,9 +88,8 @@ export default {
         '120': '120px',
         
       },
-      fontFamily: {
-        sans: ['Noto Sans TC', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+      boxShadow: {
+        'shadow-b': 'rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;',
       },
       animation: {
         'spin-slow': 'spin 1.5s linear infinite',

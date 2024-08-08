@@ -1,6 +1,6 @@
 <template>
   <!-- 使用者Tabs區塊 -->
-  <div class="user-friends w-calc-312">
+  <div class="page-friends w-calc-312">
     <!-- tabs切換功能 -->
     <section class="h-fh-50 bg-cl-473653 flex items-center">
       <section class="flex gap-3 pl-5">
@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="UserFriends">
+<script setup lang="ts" name="PageFriends">
 import BlockFrinedsList from "../components/Block/BlockFrinedsList.vue";
 import BlockMotionList from "../components/Block/BlockMotionList.vue";
 import { ref } from "vue";

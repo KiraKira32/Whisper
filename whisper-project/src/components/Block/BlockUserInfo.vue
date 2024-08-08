@@ -8,7 +8,11 @@
       <section
         class="w-screen h-screen bg-cl-1B1B1BCC flex justify-center items-center"
       >
-        <div class="bg-cl-594866 w-600 rounded-md" @click.stop>
+        <div
+          class="w-600 rounded-md"
+          :class="userState ? 'bg-cl-4D4866 ' : 'bg-cl-594866 '"
+          @click.stop
+        >
           <div class="relative p-6">
             <div class="cursor-pointer">
               <img
@@ -74,17 +78,10 @@ import {
 } from "../../store/LayoutStore";
 import { defineProps, defineEmits } from "vue";
 
-// defineProps(["userState", "friendState"]);
-
-const props = defineProps<{
+defineProps<{
   userState?: boolean;
   friendState?: boolean;
 }>();
-
-const friendState = props.friendState;
-const userState = props.userState;
-
-// console.log("userState", userState, "friendState", friendState);
 
 const emit = defineEmits<{
   (e: "update-user-state", value: boolean): void;
