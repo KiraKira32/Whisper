@@ -7,7 +7,7 @@
           <p class="line-clamp-1 text-white text-sm font-bold pr-5">
             使用者的暱稱使用者的暱稱使用者的暱稱
           </p>
-          <p class="line-clamp-1 text-cl-C3C3C3 text-xs pr-6">
+          <p class="line-clamp-1 text-cl-BEB9C5 text-xs pr-6">
             狀態狀態狀態狀態狀態狀態狀態狀態狀態
           </p>
         </div>
@@ -25,14 +25,15 @@
     </section>
     <!-- 像元件傳遞值以及接收更新的值 -->
     <section v-if="isShowInfoUser" class="absolute top-0 z-30">
-      <BlockUserInfo :userState="userState" @update-user-state="setUserState" />
+      <BlockUserInfo :userState="userState" />
     </section>
+    <!-- @update-user-state="setUserState" -->
   </div>
 </template>
 
 <script setup lang="ts" name="UserStatus">
 import BlockUserInfo from "./Block/BlockUserInfo.vue";
-import { isShowInfoUser } from "../store/LayoutStore";
+import { isShowInfoUser } from "../store/PopStore";
 import { ref } from "vue";
 
 const userState = ref(false);
@@ -43,9 +44,9 @@ const toggleUserInfo = () => {
 };
 
 // 更新 userState 的值, 用來重置 userState 狀態
-const setUserState = (newState: boolean) => {
-  userState.value = newState;
-};
+// const setUserState = (newState: boolean) => {
+//   userState.value = newState;
+// };
 </script>
 
 <style scoped></style>

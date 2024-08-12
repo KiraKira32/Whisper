@@ -25,7 +25,6 @@ export default {
         'cl-353040' :"#353040",
         'cl-BAA9C180': '#BAA9C180',
         'cl-E8E1F1': '#E8E1F1',
-        'cl-C3C3C3': '#C3C3C3',
         'cl-141316E5': '#141316E5',
         'cl-212026': '#212026',
         'cl-463F4C': '#463F4C',
@@ -50,7 +49,10 @@ export default {
         'cl-7A4CC2': '#7A4CC2',
         // 聊天室
         'cl-413E4B': '#413E4B',
-        'cl-787380': '#787380'
+        'cl-787380': '#787380',
+        'cl-7840CF': '#7840CF',
+        /* 顏色 */
+        'cl-8279C9': '#8279C9',
 
       },
       width: {
@@ -62,6 +64,8 @@ export default {
         // 頻道_好友列表
         'fw-212': '13.25rem',
         // 頻道_好友
+        'calc-72': 'calc(100dvw -  72px)',
+        'calc-120': 'calc(100dvw -  120px)',
         'calc-312': 'calc(100dvw - 312px)',
         'calc-700': 'calc(100dvw - 700px)',
         'calc-1532': 'calc(100dvw - 1532px)',

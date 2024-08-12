@@ -8,9 +8,9 @@
       >
         動態牆
       </div>
-      <div class="pb-3">
+      <div class="h-calc-150 pb-3">
         <!-- list-scroll  -->
-        <div class="h-calc-150 overflow-y-auto scroll-bar-style">
+        <div class="h-full overflow-y-auto scroll-bar-style">
           <section class="friends-flex flex-col gap-3 cursor-pointer">
             <div
               class="friends-info flex gap-2 w-full px-2 py-2"
@@ -34,7 +34,7 @@
                   >
                     好友暱稱好友暱稱
                   </p>
-                  <p class="friends-state line-clamp-1 text-xs text-cl-C3C3C3">
+                  <p class="friends-state line-clamp-1 text-xs text-cl-BEB9C5">
                     更新過後的好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態
                   </p>
                 </div>

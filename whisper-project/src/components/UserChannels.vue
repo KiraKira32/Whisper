@@ -17,12 +17,16 @@
       <div class="border-t border-cl-6B5D83 w-12"></div>
       <section class="flex flex-col gap-4 mt-4">
         <div class="channels-group" v-for="i in 5" :key="i">
-          <div
-            class="w-10 h-10 rounded-full bg-cl-6B5D83 lg:hover:rounded-lg"
-          ></div>
+          <router-link :to="{ name: 'PageHangout' }">
+            <div
+              class="w-10 h-10 rounded-full bg-cl-6B5D83 lg:hover:rounded-lg"
+            ></div>
+          </router-link>
         </div>
+
         <div class="channels-add">
           <div
+            @click="toggleCreateChannels"
             class="flex items-center justify-center w-10 h-10 bg-cl-2E2C36 rounded-full hover:rounded-lg hover:bg-cl-9C96CD cursor-pointer"
           >
             <img class="add-icon" src="/icons/add.svg" alt="" />
@@ -30,15 +34,25 @@
         </div>
       </section>
     </main>
+
+    <section class="">
+      <CreateChannels v-if="isCreateChannel" />
+    </section>
   </div>
 </template>
 
 <script setup lang="ts" name="UserChannels">
+import CreateChannels from "./Channels/CreateChannels.vue";
 import useIsMobile from "../hooks/useIsMobile";
+import { isCreateChannel } from "../store/PopStore";
 
 const isMobile = useIsMobile();
 
-console.log(isMobile.value);
+const toggleCreateChannels = () => {
+  isCreateChannel.value = true;
+  console.log("123123123");
+};
+// console.log(isMobile.value);
 </script>
 
 <style lang="scss" scoped>

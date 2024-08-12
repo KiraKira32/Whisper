@@ -35,7 +35,7 @@
             <div class="flex justify-end cursor-pointer">
               <div
                 v-if="userState"
-                class="flex gap-2 text-white bg-cl-BAA9C180 rounded py-1 px-2 hover:bg-cl-F2E9F680 transition-colors duration-500 ease-in-out"
+                class="flex gap-2 text-white bg-cl-BAA9C180 rounded py-1 px-2 hover:bg-cl-9C96CD transition-colors duration-500 ease-in-out"
               >
                 <img src="/icons/pencil_light.svg" alt="icon" />
                 <p @click="clickEdit" class="text-sm">編輯個人資料</p>
@@ -77,8 +77,11 @@ import {
   isShowInfoUser,
   isShowEdit,
   isShowInfoFriend,
-} from "../../store/LayoutStore";
-import { defineProps, defineEmits } from "vue";
+} from "../../store/PopStore";
+import {
+  defineProps,
+  // defineEmits
+} from "vue";
 import { useRouter } from "vue-router";
 
 defineProps<{
@@ -86,9 +89,9 @@ defineProps<{
   friendState?: boolean;
 }>();
 
-const emit = defineEmits<{
-  (e: "update-user-state", value: boolean): void;
-}>();
+// const emit = defineEmits<{
+//   (e: "update-user-state", value: boolean): void;
+// }>();
 
 /* 編輯資料 */
 const clickEdit = () => {
@@ -108,6 +111,6 @@ const closeInfo = () => {
   isShowInfoUser.value = false;
   isShowInfoFriend.value = false;
   /* 更新狀態  */
-  emit("update-user-state", false);
+  // emit("update-user-state", false);
 };
 </script>

@@ -49,7 +49,7 @@
                       好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱
                     </div>
                     <div
-                      class="friends-state line-clamp-1 text-xs text-cl-C3C3C3"
+                      class="friends-state line-clamp-1 text-xs text-cl-BEB9C5"
                     >
                       好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態
                     </div>

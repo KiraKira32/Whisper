@@ -109,7 +109,7 @@
 <script setup lang="ts" name="PageChatRoom">
 import BlockUserInfo from "../components/Block/BlockUserInfo.vue";
 import { ref, computed } from "vue";
-import { isShowInfoFriend } from "../store/LayoutStore";
+import { isShowInfoFriend } from "../store/PopStore";
 const inputText = ref("");
 
 const maxChars = ref(2000);

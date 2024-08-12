@@ -12,7 +12,7 @@
               </div>
               <div
                 @click="backInfo"
-                class="right-6 top-6 py-1 px-3 text-sm font-bold text-white bg-cl-9C96CD rounded cursor-pointer hover:bg-cl-BAA9C180 transition duration-300"
+                class="right-6 top-6 py-1 px-3 text-sm font-bold text-white bg-cl-BAA9C180 rounded cursor-pointer hover:bg-cl-9C96CD transition duration-300"
               >
                 返回
               </div>
@@ -92,7 +92,7 @@
 </template>
 
 <script setup lang="ts" name="BlockUserInfo">
-import { isShowInfoUser, isShowEdit } from "../../store/LayoutStore";
+import { isShowInfoUser, isShowEdit } from "../../store/PopStore";
 import { ref, computed } from "vue";
 
 const inputText = ref("");

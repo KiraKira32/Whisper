@@ -69,14 +69,14 @@
                       <div class="text-cl-EDE6F7 text-sm">好友名稱</div>
                       <div
                         v-if="currentTab == 'all' || currentTab == 'online'"
-                        class="text-cl-C3C3C3 text-xs"
+                        class="text-cl-BEB9C5 text-xs"
                       >
                         好友狀態的內容......
                       </div>
                       <!-- 等待中 -->
                       <div
                         v-if="currentTab == 'pending'"
-                        class="text-cl-C3C3C3 text-xs"
+                        class="text-cl-BEB9C5 text-xs"
                       >
                         已收到好友邀請
                       </div>
@@ -196,7 +196,7 @@
 <script setup lang="ts" name="BlockFrinedsList">
 import BlockTabsEmptyState from "../Block/BlockTabsEmptyState.vue";
 import BlockUserInfo from "../Block/BlockUserInfo.vue";
-import { isShowInfoFriend } from "../../store/LayoutStore";
+import { isShowInfoFriend } from "../../store/PopStore";
 
 import { ref, defineProps, computed, onMounted, onUnmounted } from "vue";
 
