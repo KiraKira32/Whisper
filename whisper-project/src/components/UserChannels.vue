@@ -50,7 +50,6 @@ const isMobile = useIsMobile();
 
 const toggleCreateChannels = () => {
   isCreateChannel.value = true;
-  console.log("123123123");
 };
 // console.log(isMobile.value);
 </script>

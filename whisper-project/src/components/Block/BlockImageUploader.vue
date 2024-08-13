@@ -1,6 +1,7 @@
 <template>
+  <!-- 上傳圖片-->
   <div class="block-image-uploader">
-    <section class="mb-10">
+    <section class="mb-4">
       <div class="flex flex-col items-center justify-center">
         <div v-if="!imagePreview" class="flex justify-center pt-2 pb-4">
           <img class="h-36" src="/icons/uploading_loop.svg" alt="" />
@@ -12,7 +13,6 @@
             alt="Image Preview"
             class="my-2 mx-2 w-32 h-32 rounded-full object-cover object-center"
           />
-          <!-- max-w-xs  -->
         </div>
         <!-- 圖片上傳 -->
         <input
@@ -45,19 +45,20 @@
 </template>
 
 <script lang="ts" setup name="BlockImageUploader">
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 
 /* 預覽圖片 */
 const imagePreview = ref<string | null>(null);
 
 /* 上傳圖片 */
-
 const fileInput = ref<HTMLInputElement | null>(null);
 const triggerFileInput = () => {
   if (fileInput.value) {
     fileInput.value.click();
   }
 };
+
+const emit = defineEmits(["update-image"]);
 
 /*選擇圖片 */
 const onFileChange = (event: Event) => {
@@ -72,6 +73,8 @@ const onFileChange = (event: Event) => {
     reader.onload = () => {
       /* 轉換為字符串 */
       imagePreview.value = reader.result as string;
+      /* 傳遞圖片的內容 */
+      emit("update-image", imagePreview.value);
     };
     /* 用於將檔案轉換為 base64 */
     reader.readAsDataURL(file);

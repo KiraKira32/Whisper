@@ -13,7 +13,7 @@
             class="w-full bg-cl-1F1F1F rounded py-2.5 px-4 styled-input focus:ring-1 placeholder:text-m placeholder:text-cl-6B5D83 text-cl-C4BECD focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB"
             type="text"
             placeholder="您可以利用 Whisper 使用者名稱來新增好友:)"
-            v-model="inputValue"
+            v-model="inputFriends"
           />
           <button
             class="absolute right-3 mt-2 text-white font-bold bg-cl-5E3EC6 py-1 px-2 rounded text-sm"
@@ -231,11 +231,11 @@ const toggleFriendsInfo = () => {
 };
 
 // 使用 ref 來存儲輸入框的值
-const inputValue = ref("");
+const inputFriends = ref("");
 // 判斷輸入框的值來決定按鈕的 disabled 狀態
 const isButtonDisabled = computed(() => {
   // 檢查輸入框的值是否為空
-  return inputValue.value === "";
+  return inputFriends.value === "";
 });
 
 // 追蹤好友列表中視窗設定是顯示的

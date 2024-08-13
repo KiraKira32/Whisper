@@ -78,20 +78,13 @@ import {
   isShowEdit,
   isShowInfoFriend,
 } from "../../store/PopStore";
-import {
-  defineProps,
-  // defineEmits
-} from "vue";
+import { defineProps } from "vue";
 import { useRouter } from "vue-router";
 
 defineProps<{
   userState?: boolean;
   friendState?: boolean;
 }>();
-
-// const emit = defineEmits<{
-//   (e: "update-user-state", value: boolean): void;
-// }>();
 
 /* 編輯資料 */
 const clickEdit = () => {

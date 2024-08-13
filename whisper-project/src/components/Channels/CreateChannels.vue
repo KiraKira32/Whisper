@@ -45,15 +45,45 @@
           </section>
           <!-- 上傳封面圖 -->
           <section v-if="isCreate">
-            <div class="text-center p-6">
-              <p class="text-white text-2xl font-bold mt-5">自訂伺服器頻道</p>
-              <p class="text-cl-E8E1F1 mt-2">
+            <div class="text-center pt-6 px-6">
+              <p class="text-white text-2xl font-bold mt-1">自訂伺服器頻道</p>
+              <p class="text-cl-E8E1F1 mt-1">
                 幫您的頻道新增封面圖和命名，您之後隨時都可以做更改。
               </p>
             </div>
 
             <div class="flex items-center justify-center">
-              <BlockImageUploader />
+              <BlockImageUploader @update-image="updateImage" />
+            </div>
+          </section>
+          <!-- 伺服器名稱 -->
+          <section v-if="isCreate" class="px-5 pb-5">
+            <div class="border-t border-cl-9C96CD">
+              <p class="text-sm pt-3 text-cl-E8E1F1 mb-2">伺服器名稱</p>
+              <input
+                class="w-full bg-cl-1F1F1F rounded py-2 px-4 styled-input focus:ring-1 placeholder:text-m placeholder:text-cl-6B5D83 text-cl-C4BECD focus:outline-none focus:border-cl-7225EB focus:ring-cl-7225EB"
+                type="text"
+                placeholder="請輸入您的伺服器名稱"
+                v-model="inputName"
+              />
+              <p class="text-xs pt-3 text-cl-E8E1F1 mb-2">
+                在創立伺服器的同時將代表您已同意 Whisper 的社群守則。
+              </p>
+            </div>
+          </section>
+
+          <section
+            v-if="isCreate"
+            class="bg-cl-403C57 rounded-br-md rounded-bl-md"
+          >
+            <div class="flex justify-between py-4 px-5 text-white">
+              <button class="" @click="backPage">上一頁</button>
+              <button
+                @click="createServer"
+                class="p-1 px-2 bg-cl-9C96CD rounded cursor-pointer hover:bg-cl-8E4FF1 duration-300"
+              >
+                建立伺服器
+              </button>
             </div>
           </section>
         </div>
@@ -68,28 +98,50 @@ import BlockImageUploader from "../Block/BlockImageUploader.vue";
 
 import { ref } from "vue";
 
-window.URL = window.URL || window.webkitURL;
-
 const openCreate = ref(true);
 const isCreate = ref(false);
 
-const inputDOM = ref<HTMLInputElement | null>(null);
+const inputName = ref("");
 
-const fileChange = (e: any) => {
-  console.log(e.target.files);
-};
-
-const uploadImages = () => {
-  (inputDOM.value as HTMLInputElement).click();
-};
-
-function closeInfo(): void {
+const closeInfo = () => {
+  isCreate.value = false;
   isCreateChannel.value = false;
-}
+};
 
 const create = () => {
   isCreate.value = true;
   openCreate.value = false;
+};
+
+const backPage = () => {
+  openCreate.value = true;
+  isCreate.value = false;
+};
+
+const uploadImage = ref<string | null>(null);
+/* 接收上傳的圖片內容 */
+const updateImage = (image: string) => {
+  uploadImage.value = image;
+
+  // console.log(uploadImage.value);
+};
+
+const createServer = () => {
+  /* 驗證內容是否輸入  */
+  if (inputName.value === "") {
+    alert("請輸入伺服器名稱");
+  }
+  if (uploadImage.value === "" || uploadImage.value === null) {
+    alert("請上傳圖片");
+  }
+
+  if (inputName.value && uploadImage.value) {
+    isCreateChannel.value = false;
+
+    console.log("伺服器建立成功！");
+  }
+
+  return;
 };
 </script>
 
