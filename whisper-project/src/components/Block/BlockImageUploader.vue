@@ -1,7 +1,7 @@
 <template>
   <!-- 上傳圖片-->
   <div class="block-image-uploader">
-    <section class="mb-4">
+    <section>
       <div class="flex flex-col items-center justify-center">
         <div v-if="!imagePreview" class="flex justify-center pt-2 pb-4">
           <img class="h-36" src="/icons/uploading_loop.svg" alt="" />
@@ -14,7 +14,7 @@
             class="my-2 mx-2 w-32 h-32 rounded-full object-cover object-center"
           />
         </div>
-        <!-- 圖片上傳 -->
+        <!-- 隱藏的文件輸入區塊 -->
         <input
           type="file"
           @change="onFileChange"
@@ -26,6 +26,7 @@
         <!-- 上傳按鈕 -->
         <div class="flex gap-5">
           <button
+            type="button"
             v-if="imagePreview"
             class="px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600"
             @click="removeImage"
@@ -33,6 +34,7 @@
             刪除圖片
           </button>
           <button
+            type="button"
             class="px-4 py-1 bg-cl-9C96CD text-white rounded hover:bg-cl-8279C9"
             @click="triggerFileInput"
           >

@@ -16,6 +16,7 @@
             v-model="inputFriends"
           />
           <button
+            type="button"
             class="absolute right-3 mt-2 text-white font-bold bg-cl-5E3EC6 py-1 px-2 rounded text-sm"
             :disabled="isButtonDisabled"
           >

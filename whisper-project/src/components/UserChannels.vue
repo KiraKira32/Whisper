@@ -36,13 +36,13 @@
     </main>
 
     <section class="">
-      <CreateChannels v-if="isCreateChannel" />
+      <CreateServer v-if="isCreateChannel" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts" name="UserChannels">
-import CreateChannels from "./Channels/CreateChannels.vue";
+import CreateServer from "./Channels/CreateServer.vue";
 import useIsMobile from "../hooks/useIsMobile";
 import { isCreateChannel } from "../store/PopStore";
 
