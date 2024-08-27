@@ -207,6 +207,7 @@ const props = defineProps<{
 }>();
 
 const tab = ref("friends");
+/* 用於傳遞元件顯示的區塊判斷 */
 const friendState = ref(false);
 const hoverIndex = ref<number | null>(null);
 

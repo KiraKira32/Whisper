@@ -36,7 +36,7 @@
                   嘿！您已經有邀請了嗎?
                 </p>
                 <div
-                  @click="changejoinServer"
+                  @click="changeJoinServer"
                   class="flex items-center gap-2 bg-cl-2E2C36 p-2 rounded hover:bg-neutral-900 cursor-pointer duration-300"
                 >
                   <img class="w-10 p-1" src="/icons/user_talk_rtl.svg" alt="" />
@@ -148,9 +148,10 @@ const changeCreateServer = () => {
 };
 
 /* 選擇加入伺服器 */
-const changejoinServer = () => {
+const changeJoinServer = () => {
   isJoin.value = true;
   openCreate.value = false;
+  console.log("加入伺服器");
 };
 
 /* 返回上一頁 */

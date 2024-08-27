@@ -25,7 +25,7 @@ const route = useRoute();
 
 /* 隱藏頁面 */
 const isHiddenPage = computed(() => {
-  return route.name === "PageHangout";
+  return route.name === "PageServer";
 });
 </script>
 

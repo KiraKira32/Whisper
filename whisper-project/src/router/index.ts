@@ -31,9 +31,9 @@ const router = createRouter({
           component: () => import("../pages/PageChatRoom.vue"),
         },
         {
-          path: "hangout",
-          name: "PageHangout",
-          component: () => import("../pages/PageHangout.vue"),
+          path: "server",
+          name: "PageServer",
+          component: () => import("../pages/PageServer.vue"),
         },
       ],
     },

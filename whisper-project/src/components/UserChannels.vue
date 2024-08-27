@@ -17,7 +17,7 @@
       <div class="border-t border-cl-6B5D83 w-12"></div>
       <section class="flex flex-col gap-4 mt-4">
         <div class="channels-group" v-for="i in 5" :key="i">
-          <router-link :to="{ name: 'PageHangout' }">
+          <router-link :to="{ name: 'PageServer' }">
             <div
               class="w-10 h-10 rounded-full bg-cl-6B5D83 lg:hover:rounded-lg"
             ></div>
@@ -35,9 +35,7 @@
       </section>
     </main>
 
-    <section class="">
-      <CreateServer v-if="isCreateChannel" />
-    </section>
+    <CreateServer v-if="isCreateChannel" />
   </div>
 </template>
 

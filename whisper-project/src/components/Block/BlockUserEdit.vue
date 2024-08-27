@@ -47,7 +47,7 @@
                   @click="triggerFileInput()"
                   class="absolute right-0 bottom-1 bg-cl-1B1B1BCC w-8 h-8 rounded-full cursor-pointer hover:bg-cl-BAA9C180 transition duration-500"
                 >
-                  <img class="m-2" src="/icons/pencil_light.svg" alt="" />
+                  <img class="m-1" src="/icons/camera.svg" alt="" />
                 </div>
               </section>
               <!-- 使用者名稱 -->
@@ -141,18 +141,6 @@ const triggerFileInput = () => {
   }
 };
 
-const submitEdit = () => {
-  if (inputName.value === "") {
-    return alert("請輸入名稱");
-  }
-  console.log("inputName:", inputName.value);
-  // console.log("imagePreview:", imagePreview.value);
-  console.log("inputStateText:", inputStateText.value);
-
-  /* 關閉編輯元件 */
-  isShowEdit.value = false;
-  isShowInfoUser.value = false;
-};
 /*選擇圖片 */
 const onFileChange = (event: Event) => {
   console.log(event);
@@ -172,6 +160,19 @@ const onFileChange = (event: Event) => {
     /* 用於將檔案轉換為 base64 */
     reader.readAsDataURL(file);
   }
+};
+
+const submitEdit = () => {
+  if (inputName.value === "") {
+    return alert("請輸入名稱");
+  }
+  console.log("inputName:", inputName.value);
+  // console.log("imagePreview:", imagePreview.value);
+  console.log("inputStateText:", inputStateText.value);
+
+  /* 關閉編輯元件 */
+  isShowEdit.value = false;
+  isShowInfoUser.value = false;
 };
 
 /* 關閉編輯元件 */

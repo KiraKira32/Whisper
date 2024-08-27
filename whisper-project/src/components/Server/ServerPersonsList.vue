@@ -35,40 +35,56 @@
             <p class="text-cl-E8E1F1 text-xs">成員列表: 87人數</p>
             <div
               class="friends-info flex gap-2 w-fw-212 px-2 py-2 hover:bg-cl-BAA9C180 hover:rounded-md"
-              v-for="i in 39"
-              :key="i"
+              v-for="(i, index) in 39"
+              :key="index"
             >
-              <router-link :to="{ name: 'PageChatRoom' }">
-                <section class="flex gap-2">
+              <!-- <router-link :to="{ name: 'PageChatRoom' }"> -->
+              <section class="flex gap-2" @click="togglePerson(index)">
+                <div
+                  class="relative w-8 h-8 bg-white rounded-full flex-shrink-0"
+                >
+                  <img
+                    class="absolute bottom-0 right-0"
+                    src="/icons/state_online.svg"
+                    alt=""
+                  />
+                </div>
+                <div>
                   <div
-                    class="relative w-8 h-8 bg-white rounded-full flex-shrink-0"
+                    class="friends-name line-clamp-1 text-sm font-bold text-cl-C4BECD"
                   >
-                    <img
-                      class="absolute bottom-0 right-0"
-                      src="/icons/state_online.svg"
-                      alt=""
-                    />
+                    好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱
                   </div>
-                  <div>
-                    <div
-                      class="friends-name line-clamp-1 text-sm font-bold text-cl-C4BECD"
-                    >
-                      好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱好友暱稱
-                    </div>
-                    <div
-                      class="friends-state line-clamp-1 text-xs text-cl-BEB9C5"
-                    >
-                      好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態
-                    </div>
+                  <div
+                    class="friends-state line-clamp-1 text-xs text-cl-BEB9C5"
+                  >
+                    好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態好友狀態
                   </div>
-                </section>
-              </router-link>
+                </div>
+              </section>
+              <!-- </router-link> -->
             </div>
           </section>
         </div>
       </div>
+      <BlockUserInfo v-if="isShowInfoFriend" :friendState="friendState" />
     </main>
   </div>
 </template>
 
-<script setup leng="ts" name="HangoutPersonsList"></script>
+<script setup lang="ts" name="HangoutPersonsList">
+import BlockUserInfo from "../Block/BlockUserInfo.vue";
+import { isShowInfoFriend } from "../../store/PopStore";
+import { ref } from "vue";
+
+/* 用於傳遞元件顯示的區塊判斷 */
+const friendState = ref(true);
+
+const activePerson = ref(0);
+const togglePerson = (index: number) => {
+  activePerson.value = activePerson.value === index ? 0 : index;
+  /* 點擊伺服器成員列表 */
+  isShowInfoFriend.value = true;
+  console.log(index);
+};
+</script>
